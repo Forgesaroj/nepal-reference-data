@@ -1,0 +1,17 @@
+{
+  "name": "nepal-reference-data",
+  "version": "0.1.0",
+  "description": "Sourced developer data for Nepal, starting with current local-level and ward postal codes.",
+  "type": "module",
+  "exports": "./src/index.js",
+  "bin": {
+    "nepal-refdata": "./bin/nepal-refdata.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

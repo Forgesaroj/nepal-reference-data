@@ -1,0 +1,6 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { listLocalLevels, findLocalLevel, findWard, getPostalDirectoryMetadata } from '../src/index.js';
+test('directory has expected national coverage and unique codes', () => { const units = listLocalLevels(); const meta = getPostalDirectoryMetadata(); assert.equal(units.length, 753); assert.equal(meta.wards, 6743); assert.equal(new Set(units.map(x => x.local_code)).size, units.length); assert.equal(new Set(units.flatMap(x => x.wards.map(w => w.code))).size, meta.wards); });
+test('ward codes match the local code and ward number', () => { for (const unit of listLocalLevels()) { assert.equal(unit.local_code.length, 5); assert.equal(unit.wards.length, unit.ward_count); for (const ward of unit.wards) { assert.equal(ward.code, unit.local_code + String(ward.ward).padStart(2, '0')); assert.equal(ward.code.length, 7); } } });
+test('lookups resolve a local level and ward', () => { const unit = findLocalLevel('10101'); assert.equal(unit.local_level_ne, 'फक्ताङ्लुङ्ग गाउँपालिका'); const ward = findWard('1010107'); assert.equal(ward.ward, 7); assert.equal(ward.local_code, '10101'); assert.equal(findWard('9999999'), undefined); });
