@@ -6,11 +6,13 @@ Data is plain JSON for use from any language. A zero-dependency JavaScript helpe
 
 ## Install
 
-Clone the repository or copy the JSON file you need. For the JavaScript helper:
+Install the JavaScript helper directly from GitHub:
 
 ```sh
-npm install
+npm install github:Forgesaroj/nepal-reference-data
 ```
+
+You can also clone the repository or copy the JSON file into projects in any language. The package is not published to the npm registry.
 
 ## Use the JSON directly
 
@@ -37,6 +39,8 @@ node bin/nepal-refdata.js postal 10101
 node bin/nepal-refdata.js postal 1010107
 node bin/nepal-refdata.js info
 ```
+
+After installing the package, use the `nepal-refdata` command from your project's `node_modules/.bin` directory (or through `npx`).
 
 ## Data quality and scope
 
