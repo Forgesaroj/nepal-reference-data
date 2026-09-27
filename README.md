@@ -2,7 +2,7 @@
 
 Sourced, versioned reference data for developers building applications for Nepal. The first release provides the current postal directory published by Nepal's Department of Postal Services, with all 753 local levels and their 6,743 wards.
 
-Data is plain JSON for use from any language. A zero-dependency JavaScript helper and CLI are included.
+Data is plain JSON for use from any language. The first release includes postal codes and the NRB list of bank and financial institution names/codes. A zero-dependency JavaScript helper and CLI are included.
 
 ## Install
 
@@ -26,10 +26,11 @@ Each local-level record contains Nepali province, district, local-level and post
 ## JavaScript API
 
 ```js
-import { findLocalLevel, findWard, listLocalLevels } from 'nepal-reference-data';
+import { findLocalLevel, findWard, listLocalLevels, listFinancialInstitutions } from 'nepal-reference-data';
 const municipality = findLocalLevel('10101');
 const ward = findWard('1010107');
 const districtUnits = listLocalLevels({ district: 'ताप्लेजुङ' });
+const institutions = listFinancialInstitutions();
 ```
 
 ## CLI
@@ -37,6 +38,8 @@ const districtUnits = listLocalLevels({ district: 'ताप्लेजुङ' 
 ```sh
 node bin/nepal-refdata.js postal 10101
 node bin/nepal-refdata.js postal 1010107
+node bin/nepal-refdata.js institutions
+node bin/nepal-refdata.js institution 11001
 node bin/nepal-refdata.js info
 ```
 
@@ -47,7 +50,8 @@ After installing the package, use the `nepal-refdata` command from your project'
 - The source page publishes 753 local-level entries; this release includes all of them.
 - Ward codes are represented as listed by the official directory. For example, local code `10101` has ward codes `1010101` through `1010107`.
 - Names are provided in Nepali script as published. This release does not add unofficial English spellings, coordinates, or legacy postal codes.
-- Bank branches and cooperative registries are not yet included. Official data is split across regulators and local jurisdictions; we will add those datasets only with clear source, coverage, and last-checked metadata.
+- The BFI list includes official institution names and NRB codes. Branch locations are not yet included.
+- Cooperative registries and branch locations are not yet included. Official data is split across regulators and local jurisdictions; we will add those datasets only with clear source, coverage, and last-checked metadata.
 - Verify critical address information with the issuing authority before operational use.
 
 ## Source and updates
